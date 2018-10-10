@@ -46,7 +46,7 @@ const calendar = google.calendar('v3');
 process.env.DEBUG = 'dialogflow:*'; // It enables lib debugging statements
 
 const timeZone = 'America/Toronto';  // Change it to your time zone
-const timeZoneOffset = '-04:00';         // Change it to your time zone offset
+const timeZoneOffset = '-04:00';     // Change it to your time zone offset
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
   const agent = new WebhookClient({ request, response });
@@ -54,7 +54,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   function makeAppointment (agent) {
     // Use the Dialogflow's date and time parameters to create Javascript Date instances, 'dateTimeStart' and 'dateTimeEnd',
     // which are used to specify the appointment's time.
-    const appointmentDuration = 1;// Define the length of the appointment to be one hour.
+    const appointmentDuration = agent.parameters.duration;// Define the length of the appointment to be one hour.
     const dateTimeStart = convertParametersDate(agent.parameters.date, agent.parameters.time);
     const dateTimeEnd = addHours(dateTimeStart, appointmentDuration);
     const appointmentTimeString = getLocaleTimeString(dateTimeStart);
