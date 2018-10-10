@@ -52,6 +52,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   const agent = new WebhookClient({ request, response });
 
   function makeAppointment (agent) {
+    agent.add(`October ten twenty eighteen`);
     // Use the Dialogflow's date and time parameters to create Javascript Date instances, 'dateTimeStart' and 'dateTimeEnd',
     // which are used to specify the appointment's time.
     // const appointmentDuration = agent.parameters.duration;// Define the length of the appointment to be one hour.
